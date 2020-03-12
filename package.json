@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "cross-env NODE_ENV=development node server.js"
   },
   "repository": {
     "type": "git",
@@ -29,9 +30,15 @@
     "axios": "^0.19.2",
     "bootstrap": "^4.4.1",
     "express": "^4.17.1",
+    "helmet": "^3.21.3",
+    "js-cookie": "^2.2.1",
     "next": "^9.3.0",
+    "node-sass": "^4.13.1",
     "react": "^16.13.0",
     "react-bootstrap": "^1.0.0-beta.17",
-    "react-dom": "^16.13.0"
+    "react-dom": "^16.13.0",
+    "redux": "^4.0.5",
+    "shortid": "^2.2.15",
+    "styled-jsx-plugin-sass": "^1.0.0"
   }
 }
