@@ -48,13 +48,13 @@ const Layout = props => {
                 <script src="/public/js/front.lib.js"/>
             </Head>
 
-            <Header isResponsive={isResponsive} activeMenu={activeMenu}/>
 
-            <div className={containerClass}>
+            <div className={"wrap"}>
+                <Header isResponsive={isResponsive} activeMenu={activeMenu}/>
                 {props.children}
+                <Footer isResponsive={isResponsive && !isAdminLogin}/>
             </div>
 
-            <Footer isResponsive={isResponsive && !isAdminLogin}/>
         </>
     )
 };
