@@ -17,38 +17,6 @@ const { option } = require("./config.js");
 const port = dev ? option.port.dev : option.port.production;
 const ip = dev ? option.ip.dev : option.ip.production;
 
-// const fs = require('fs');
-// const indexRouting = [];
-// const getIndexFiles = async (dir) => {
-//   const folder = [];
-//   fs.readdir(`${dir}`, async (err, data) => {
-//     if(err) {
-//       console.log(err);
-//       throw err;
-//     }
-//
-//     const index = data.filter(data => data === 'index.js');
-//     if(index.length && dir !== `${__dirname}/pages`){
-//       indexRouting.push(dir);
-//       console.log(indexRouting);
-//     }
-//
-//     folder.push(data.filter(data => data !== 'api' && !data.split('.')[1]));
-//     folder.pop()
-//   });
-//
-//   for(let val of folder) {
-//     await getIndexFiles(`${dir}/${val}`);
-//   }
-//
-// };
-// getIndexFiles(`${__dirname}/pages`).then(_ => {
-//   console.log('getIndexFiles finished..');
-//   console.log(indexRouting);
-// });
-
-
-
 app.prepare().then(() => {
   createServer((req, res) => {
     // Be sure to pass `true` as the second argument to `url.parse`.
@@ -64,13 +32,6 @@ app.prepare().then(() => {
       bodyParser.urlencoded({ extended: true }),
       bodyParser.json()
     );
-
-    // if (pathname === "/admin") {
-    //   res.writeHead(302, { Location: "/admin/login" });
-    //   res.end();
-    // } else {
-    //   handle(req, res, parsedUrl);
-    // }
 
     handle(req, res, parsedUrl);
 

@@ -5,6 +5,8 @@ import { Provider } from 'react-redux';
 import withRedux from 'next-redux-wrapper';
 import store from '../redux/store';
 
+import {makeStore} from "./../redux/redux";
+
 // 전역 css
 import "../public/css/bootstrap.css";
 
@@ -18,21 +20,21 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatic
 // import * as gtag from "../public/js/gtag";
 // router.events.on("routeChangeComplete", url => gtag.pageview(url));
 
-function MyApp({ Component, pageProps, store }) {
-// pageProps that were returned from 'getInitialProps are stored in the props
+export default withRedux(makeStore, {debug: true})(class MyApp extends App {
 
-    console.log(Component);
-    console.log(pageProps);
-    console.log(store);
-    return (
-        <Provider store={store}>
-            <Component {...pageProps}/>
-        </Provider>
-    );
-}
+    render() {
+        const {Component, pageProps, store} = this.props;
+        return (
+            <Provider store={store}>
+                <Component {...pageProps} />
+            </Provider>
+        );
+    }
 
-// makeStore fn that returns a new store for every request
-const makeStore = () => store;
+});
 
-// withRedux wrapper that passes the store to the App Component
-export default withRedux(makeStore)(MyApp);
+// // makeStore fn that returns a new store for every request
+// const makeStore = () => store;
+//
+// // withRedux wrapper that passes the store to the App Component
+// export default withRedux(makeStore)(MyApp);
