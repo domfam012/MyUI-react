@@ -21,9 +21,9 @@ config.autoAddCss = false; // Tell Font Awesome to skip adding the CSS automatic
 function MyApp({ Component, pageProps, store }) {
 // pageProps that were returned from 'getInitialProps are stored in the props
 
-    console.log(Component);
-    console.log(pageProps);
-    console.log(store);
+    // console.log(Component);
+    // console.log(pageProps);
+    // console.log(store);
     return (
         <Provider store={store}>
             <Component {...pageProps}/>
