@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-import { option } from "../config";
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -21,31 +20,7 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="ko">
-        <Head>
-          {/*Global Site Tag (gtag.js) - Google Analytics*/}
-          {/*<script*/}
-          {/*  async*/}
-          {/*  src={`https://www.googletagmanager.com/gtag/js?id=${option.GA_TRACKING_ID}`}*/}
-          {/*/>*/}
-          {/*<script*/}
-          {/*  dangerouslySetInnerHTML={{*/}
-          {/*    __html: `*/}
-          {/*              window.dataLayer = window.dataLayer || [];*/}
-          {/*              function gtag(){dataLayer.push(arguments);}*/}
-          {/*              gtag('js', new Date());*/}
-          {/*              gtag('config', '${option.GA_TRACKING_ID}', {*/}
-          {/*                  page_path: window.location.pathname,*/}
-          {/*              });*/}
-          {/*          `*/}
-          {/*  }}*/}
-          {/*/>*/}
-          {/*Google adsense*/}
-          {/*<script*/}
-          {/*  data-ad-client="ca-pub-1877318530770347"*/}
-          {/*  async*/}
-          {/*  src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js`}*/}
-          {/*/>*/}
-        </Head>
+        <Head></Head>
         <body>
           <Main />
           <NextScript />

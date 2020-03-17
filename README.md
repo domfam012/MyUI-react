@@ -1,4 +1,4 @@
-#[MyUI](http://myxd.co.kr, "MyXD Link") // -> currentyl - MyXD -> need for MyUI domain
+#[MyUI]
 ###### Domfam_v0.1.2
 - - - 
 #### UI Template with *NextJS*, *React*, *Express*, *Bootstrap*

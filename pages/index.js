@@ -27,10 +27,4 @@ const Index = props => {
   );
 };
 
-Index.getInitialProps = async ctx => {
-    return {
-        data: 1
-    }
-};
-
 export default Index;

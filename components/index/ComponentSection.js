@@ -9,8 +9,8 @@ export default  () => (
 
             <div className="row">
                 <div className="col col-sm-6 item">
-                    <h5 className="title"><strong><i className="far fa-th"></i><span
-                        className="text">COMPONENTS</span></strong></h5>
+                    <h5 className="title"><strong><i className="fas fa-th"></i><span className="text">COMPONENTS</span></strong>
+                    </h5>
                     <ul className="detail">
                         <li>카드 (Cards)</li>
                         <li>변수 (Vars)</li>
@@ -20,7 +20,7 @@ export default  () => (
                     </ul>
                 </div>
                 <div className="col col-sm-6 item">
-                    <h5 className="title"><strong><i className="far fa-bell"></i><span className="text">BUTTONS & NOTIFICATIONS</span></strong>
+                    <h5 className="title"><strong><i className="fas fa-bell"></i><span className="text">BUTTONS & NOTIFICATIONS</span></strong>
                     </h5>
                     <ul className="detail">
                         <li>기본버튼 (Standard Button)</li>
@@ -34,15 +34,15 @@ export default  () => (
             </div>
             <div className="row">
                 <div className="col col-sm-6 item">
-                    <h5 className="title"><strong><i className="far fa-border-inner"></i><span className="text">FORMS & TABLES</span></strong>
+                    <h5 className="title"><strong><i className="fas fa-th-large"></i><span className="text">FORMS & TABLES</span></strong>
                     </h5>
                     <ul className="detail">
                         <li>유효성 검사 (Form Validation)</li>
                     </ul>
                 </div>
                 <div className="col col-sm-6 item">
-                    <h5 className="title"><strong><i className="far fa-bolt"></i><span className="text">PLUGINS, WIDGET</span></strong>
-                    </h5>
+                    <h5 className="title"><strong><i className="fas fa-bolt"></i><span
+                        className="text">PLUGINS, WIDGET</span></strong></h5>
                     <ul className="detail">
                         <li>달력 (bootstrap-datepicker)</li>
                     </ul>
@@ -50,7 +50,7 @@ export default  () => (
             </div>
             <div className="row">
                 <div className="col col-sm-6 item">
-                    <h5 className="title"><strong><i className="far fa-th-large"></i><span className="text">EXTRA COMPONENTS</span></strong>
+                    <h5 className="title"><strong><i className="fas fa-square"></i><span className="text">EXTRA COMPONENTS</span></strong>
                     </h5>
                     <ul className="detail">
                         <li>로그인 (Login Page)</li>
