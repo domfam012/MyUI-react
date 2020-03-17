@@ -1,6 +1,5 @@
 node_modules/
 .idea
 _next
-redux
 .gitignore
 config.js
