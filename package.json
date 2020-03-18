@@ -1,6 +1,6 @@
 {
   "name": "myui-react",
-  "version": "0.0.4",
+  "version": "1.0.0",
   "description": "MyUI React start package (Redux, NextJS, Express, Bootstrap included)",
   "main": "index.js",
   "scripts": {
