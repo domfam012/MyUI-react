@@ -1,6 +1,6 @@
 {
   "name": "myui-react",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "MyUI React start package (Redux, NextJS, Express, Bootstrap included)",
   "main": "index.js",
   "scripts": {
@@ -45,5 +45,13 @@
     "redux": "^4.0.5",
     "shortid": "^2.2.15",
     "styled-jsx-plugin-sass": "^1.0.0"
+  },
+  "peerDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.20",
+    "jquery": "^1.9.1 - 3"
+  },
+  "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.27",
+    "jquery": "^3.4.1"
   }
 }
