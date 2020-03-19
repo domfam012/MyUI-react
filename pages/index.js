@@ -13,9 +13,9 @@ const Index = props => {
         <IntroductionSection/>
 
         <div className="main-bg">
-            <div className="bar left-bar"></div>
-            <div className="bar right-bar"></div>
-            <img className="main-bg" src="/img/main/main-bg.png" alt="My UI background image"/>
+            <div className="bar left-bar"/>
+            <div className="bar right-bar"/>
+            <img className="main-bg" src="../img/main/main-bg.png" alt="My UI background image" />
         </div>
 
         <div className="bg-container">

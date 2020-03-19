@@ -13,13 +13,13 @@ export default  () => (
         </div>
         <div className="btn-area">
             <button className="btn btn-xl btn-primary download">다운로드 MyUI</button>
-            <button className="btn btn-xl btn-outline-secondary preview ml-1">라이브 미리보기</button>
+            <button className="btn btn-xl btn-outline-secondary preview" style={{"marginLeft": "9px"}}>라이브 미리보기</button>
         </div>
         <div className="github">
             <div className="line">MyUI를 좋아한다면 <strong>Github에서 별을 보내주세요.</strong></div>
             <div className="link">
                 <a href="#">
-                    <img src="/img/main/github-stars.png" alt="github stars"/>
+                    <img src="../img/main/github-stars.png" alt="github stars"/>
                 </a>
             </div>
         </div>

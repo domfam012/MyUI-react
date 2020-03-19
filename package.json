@@ -1,10 +1,10 @@
 {
   "name": "myui-react",
-  "version": "1.0.3",
-  "description": "MyUI React start package (Redux, NextJS, Express, Bootstrap included)",
+  "version": "1.0.5",
+  "description": "한국형 리액트, 부트스트랩 템플릿",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development node server.js"
+    "dev": "node server.js"
   },
   "repository": {
     "type": "git",
