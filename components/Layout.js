@@ -4,6 +4,8 @@ import Footer from './Footer';
 import React from "react";
 
 const Layout = props => {
+    console.log(props.page)
+
     return (
         <>
             {/* 공통 head 영역 */}
@@ -21,6 +23,7 @@ const Layout = props => {
             </Head>
             <div className={"wrap"}>
                 <Header/>
+
                 {props.children}
                 <Footer/>
             </div>
