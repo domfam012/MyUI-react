@@ -10,8 +10,10 @@ import Aside from "./Aside";
 const Layout = props => {
   const router = useRouter();
 
+  console.log(router)
+
   let page = "";
-  switch (router.pathname.split("/")[1]) {
+  switch (router.asPath.split("/")[1]) {
     case "":
       page = "index";
       break;

@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import Link from "next/link";
 import {useRouter} from "next/router";
 
-// Header
+// DocHeader
 const DocHeader = props => {
 
     // TODO: nav-item document.html component.html 구분 필요한지
