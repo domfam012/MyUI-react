@@ -1,8 +1,10 @@
-import Head from "next/head";
-import Header from "./Header";
-import Footer from "./Footer";
 import React from "react";
+import Head from "next/head";
 import { useRouter } from "next/router";
+
+import Header from "./Header";
+import DocHeader from "./DocHeader";
+import Footer from "./Footer";
 import Aside from "./Aside";
 
 const Layout = props => {
@@ -61,6 +63,7 @@ const Layout = props => {
           } else {
             return (
               <>
+                <DocHeader />
                 <Aside />
                 {props.children}
               </>
