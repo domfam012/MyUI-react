@@ -6,7 +6,8 @@ import withRedux from 'next-redux-wrapper';
 import store from '../redux/store';
 
 // 전역 css
-import "../public/css/bootstrap.css";
+// import "../public/css/bootstrap.css";
+import "../public/css/bootstrap.min.css";
 import "../public/css/fonts/fontawesome/fontawesome.css";
 import "../public/css/fonts/fontawesome/brands.css";
 import "../public/css/fonts/fontawesome/regular.css";
