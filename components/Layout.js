@@ -47,15 +47,26 @@ const Layout = props => {
 
         <script src="/js/bundle.js" />
       </Head>
+
       <div className={"wrap"}>
-        <Header />
         {(() => {
-          if (page !== "index") {
-            return <Aside />;
+          if (page === "index") {
+            return (
+              <>
+                <Header />
+                {props.children}
+                <Footer />
+              </>
+            );
+          } else {
+            return (
+              <>
+                <Aside />
+                {props.children}
+              </>
+            );
           }
         })()}
-        {props.children}
-        <Footer />
       </div>
     </>
   );
