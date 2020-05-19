@@ -5,11 +5,93 @@ import cookie from "js-cookie";
 
 import { Carousel, Pagination } from "react-bootstrap";
 
+// bootstrap 에서 사용한 datetimepicker 리액트 버전 -> 리액트 버전 호환 문제로 사용 불가
+// import DateTimeField from "react-bootstrap-datetimepicker";
+
+// https://reactdatepicker.com/
+import DatePicker, { CalendarContainer } from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+const DateInput = ({ val, onClick }) => (
+    <div onClick={onClick}>
+      <input
+          type="text"
+          id="datePicker"
+          className="form-control"
+          placeholder="2020-02-23"
+          title="datepicker"
+          data-autohide="true"
+          value={val}
+          style={{width: "200px"}}
+      />
+      <button
+          className="btn btn-outline-light btn-calendar add-on"
+          type="submit"
+      >
+        <i className="far fa-calendar-alt" />
+      </button>
+    </div>
+);
+
+const DateInputSm = ({ val, onClick }) => (
+    <div onClick={onClick}>
+      <input
+          type="text"
+          id="datePicker2"
+          className="form-control form-control-sm"
+          placeholder="2020-02-23"
+          title="datepicker"
+          data-autohide="true"
+          value={val}
+          style={{width: "200px"}}
+      />
+      <button
+          className="btn btn-outline-light btn-calendar btn-calendar-sm add-on"
+          type="submit"
+      >
+        <i className="far fa-calendar-alt" />
+      </button>
+    </div>
+)
+
+const DateInputLg = ({ val, onClick }) => (
+    <div onClick={onClick}>
+      <input
+          type="text"
+          id="datePicker"
+          className="form-control"
+          placeholder="2020-02-23"
+          title="datepicker"
+          data-autohide="true"
+          value={val}
+          style={{width: "200px"}}
+      />
+      <button
+          className="btn btn-outline-light btn-calendar add-on"
+          type="submit"
+      >
+        <i className="far fa-calendar-alt" />
+      </button>
+    </div>
+);
+
 // Component
 const Component = props => {
   const router = useRouter();
 
   const [ activePage, setActivePage ] = useState(1);
+  const [ date, setDate ] = useState(new Date());
+
+
+  const DateContainer = ({ className, children }) => {
+    return (
+        <div stlye={"z-index: 120"}>
+          <CalendarContainer className={className}>
+            <div>{children}</div>
+          </CalendarContainer>
+        </div>
+    )
+  };
 
   return (
     <div className="doc-content">
@@ -1151,81 +1233,42 @@ const Component = props => {
         </p>
         <p className="ml-3 mb-4">인풋박스의 상단에 위치한다.</p>
         <div className="mb-3 pl-3 font-weight-bold">Normal</div>
+
         <div className="pl-3 mb-4">
-          <div
-            className="input-group date com-input-width"
-            data-provide="datepicker"
-            data-date-today-highlight="true"
-            data-date-language="kr"
-            data-date-format="yyyy-mm-dd"
-            autoclose="true"
-          >
-            <input
-              type="text"
-              id="datePicker"
-              className="form-control"
-              placeholder="2020-02-23"
-              title="datepicker"
-              data-autohide="true"
-            />
-            <button
-              className="btn btn-outline-light btn-calendar add-on"
-              type="submit"
-            >
-              <i className="far fa-calendar-alt" />
-            </button>
-          </div>
+
+          <DatePicker
+              selected={date}
+              dateFormat={"yyyy-MM-dd"}
+              customInput={<DateInput/>}
+              calendarContainer={DateContainer}
+              popperClassName="datePopper"
+              onChange={newDate => setDate(newDate)}
+          />
+
         </div>
         <div className="mb-3 pl-3 font-weight-bold">Size</div>
+
         <div className="pl-3 mb-3">
-          <div
-            className="input-group date com-input-width"
-            data-provide="datepicker"
-            data-date-today-highlight="true"
-            data-date-language="kr"
-            data-date-format="yyyy-mm-dd"
-            autoclose="true"
-          >
-            <input
-              type="text"
-              id="datePicker2"
-              className="form-control form-control-sm"
-              placeholder="2020-02-23"
-              title="datepicker"
-              data-autohide="true"
-            />
-            <button
-              className="btn btn-outline-light btn-calendar btn-calendar-sm add-on"
-              type="submit"
-            >
-              <i className="far fa-calendar-alt" />
-            </button>
-          </div>
+
+          <DatePicker
+              selected={date}
+              dateFormat={"yyyy-MM-dd"}
+              customInput={<DateInputSm/>}
+              calendarContainer={DateContainer}
+              popperClassName="datePopper"
+              onChange={newDate => setDate(newDate)}
+          />
         </div>
+
         <div className="pl-3 mb-3">
-          <div
-            className="input-group date com-input-width"
-            data-provide="datepicker"
-            data-date-today-highlight="true"
-            data-date-language="kr"
-            data-date-format="yyyy-mm-dd"
-            autoclose="true"
-          >
-            <input
-              type="text"
-              id="datePicker"
-              className="form-control"
-              placeholder="2020-02-23"
-              title="datepicker"
-              data-autohide="true"
-            />
-            <button
-              className="btn btn-outline-light btn-calendar add-on"
-              type="submit"
-            >
-              <i className="far fa-calendar-alt" />
-            </button>
-          </div>
+          <DatePicker
+              selected={date}
+              dateFormat={"yyyy-MM-dd"}
+              customInput={<DateInputLg/>}
+              calendarContainer={DateContainer}
+              popperClassName="datePopper"
+              onChange={newDate => setDate(newDate)}
+          />
         </div>
       </div>
 
@@ -2257,6 +2300,16 @@ const Component = props => {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        body{
+          background-color: red
+        }
+        .datePopper {
+          z-index: 120;
+        }
+      `}</style>
+
     </div>
   );
 };
