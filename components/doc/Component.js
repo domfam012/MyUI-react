@@ -3,11 +3,13 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import cookie from "js-cookie";
 
-import { Carousel } from "react-bootstrap";
+import { Carousel, Pagination } from "react-bootstrap";
 
 // Component
 const Component = props => {
   const router = useRouter();
+
+  const [ activePage, setActivePage ] = useState(1);
 
   return (
     <div className="doc-content">
@@ -1242,8 +1244,10 @@ const Component = props => {
       </div>
       <div className="text mb-5">
         <nav aria-label="Page navigation example">
-          <ul className="pagination pagination-circle">
-            <li className="page-item disabled">
+
+          <Pagination>
+            {/* a class 에 추가 값 안들어감 */}
+            <li className={activePage !== 1 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(1)}>
               <a className="page-link page-arrow" aria-label="Previous">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-double-left" />
@@ -1251,7 +1255,7 @@ const Component = props => {
                 <span className="sr-only">Previous</span>
               </a>
             </li>
-            <li className="page-item disabled">
+            <li className={activePage !== 1 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(activePage - 1)}>
               <a className="page-link page-arrow" aria-label="Previous">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-left" />
@@ -1259,22 +1263,12 @@ const Component = props => {
                 <span className="sr-only">Previous</span>
               </a>
             </li>
-            <li className="page-item active">
-              <a className="page-link">1</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">2</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">3</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">4</a>
-            </li>
-            <li className="page-item">
-              <a className="page-link">5</a>
-            </li>
-            <li className="page-item">
+            <Pagination.Item active={1 === activePage} onClick={() => setActivePage(1)}>1</Pagination.Item>
+            <Pagination.Item active={2 === activePage} onClick={() => setActivePage(2)}>2</Pagination.Item>
+            <Pagination.Item active={3 === activePage} onClick={() => setActivePage(3)}>3</Pagination.Item>
+            <Pagination.Item active={4 === activePage} onClick={() => setActivePage(4)}>4</Pagination.Item>
+            <Pagination.Item active={5 === activePage} onClick={() => setActivePage(5)}>5</Pagination.Item>
+            <li className={activePage !== 5 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(activePage + 1)}>
               <a className="page-link page-arrow" aria-label="Next">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-right" />
@@ -1282,7 +1276,7 @@ const Component = props => {
                 <span className="sr-only">Next</span>
               </a>
             </li>
-            <li className="page-item">
+            <li className={activePage !== 5 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(5)}>
               <a className="page-link page-arrow" aria-label="Next">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-double-right" />
@@ -1290,7 +1284,8 @@ const Component = props => {
                 <span className="sr-only">Next</span>
               </a>
             </li>
-          </ul>
+          </Pagination>
+
         </nav>
       </div>
       <h3 className="title-sm com-pt" id="tab">
