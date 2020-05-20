@@ -1,6 +1,8 @@
 import React from 'react';
 import Link from "next/link";
 
+import Scrollspy from "react-scrollspy";
+
 // aside
 const Aside = props => (
     <aside className="doc-aside">
@@ -18,10 +20,12 @@ const Aside = props => (
                 </Link>
 
                 <div className="m-menu">
-                    <a className="m-item nav-link" href="#intro">소개</a>
-                    <a className="m-item nav-link" href="#download">다운로드</a>
-                    <a className="m-item nav-link" href="#buildtool">빌드도구</a>
-                    <a className="m-item nav-link" href="#device">브라우저&디바이스</a>
+                    <Scrollspy items={ ['intro', 'download', 'buildtool', 'device'] } currentClassName={"active"}>
+                        <a className="m-item nav-link" href="#intro">소개</a>
+                        <a className="m-item nav-link" href="#download">다운로드</a>
+                        <a className="m-item nav-link" href="#buildtool">빌드도구</a>
+                        <a className="m-item nav-link" href="#device">브라우저&디바이스</a>
+                    </Scrollspy>
                 </div>
 
                 <Link href={"./component"}>
@@ -29,19 +33,26 @@ const Aside = props => (
                 </Link>
 
                 <div className="m-menu">
-                    <a className="m-item nav-link" href="#badge">배지(Badge)</a>
-                    <a className="m-item nav-link" href="#breadcrumb">경로(Breadcrumb)</a>
-                    <a className="m-item nav-link" href="#step">단계(Step)</a>
-                    <a className="m-item nav-link" href="#slide">슬라이드(Slide)</a>
-                    <a className="m-item nav-link" href="#button">버튼(Button)</a>
-                    <a className="m-item nav-link" href="#card">카드(Cards)</a>
-                    <a className="m-item nav-link" href="#form">폼(Forms)</a>
-                    <a className="m-item nav-link" href="#pagination">페이지네이션(Pagination)</a>
-                    <a className="m-item nav-link" href="#tab">탭(Tab)</a>
-                    <a className="m-item nav-link" href="#table">테이블(Table)</a>
-                    <a className="m-item nav-link" href="#snb">사이드 네비게이션 바(SNB)</a>
-                    <a className="m-item nav-link" href="#navbar">네비게이션 바(Navigation Bars)</a>
-                    <a className="m-item nav-link" href="#modal">모달(Modal)</a>
+                    <Scrollspy
+                        items={[
+                            'badge', 'breadcrumb', 'step', 'slide', 'button', 'card', 'form',
+                            'pagination', 'tab', 'table', 'snb', 'navbar', 'modal'
+                        ]}
+                        currentClassName={"active"}>
+                        <a className="m-item nav-link" href="#badge">배지(Badge)</a>
+                        <a className="m-item nav-link" href="#breadcrumb">경로(Breadcrumb)</a>
+                        <a className="m-item nav-link" href="#step">단계(Step)</a>
+                        <a className="m-item nav-link" href="#slide">슬라이드(Slide)</a>
+                        <a className="m-item nav-link" href="#button">버튼(Button)</a>
+                        <a className="m-item nav-link" href="#card">카드(Cards)</a>
+                        <a className="m-item nav-link" href="#form">폼(Forms)</a>
+                        <a className="m-item nav-link" href="#pagination">페이지네이션(Pagination)</a>
+                        <a className="m-item nav-link" href="#tab">탭(Tab)</a>
+                        <a className="m-item nav-link" href="#table">테이블(Table)</a>
+                        <a className="m-item nav-link" href="#snb">사이드 네비게이션 바(SNB)</a>
+                        <a className="m-item nav-link" href="#navbar">네비게이션 바(Navigation Bars)</a>
+                        <a className="m-item nav-link" href="#modal">모달(Modal)</a>
+                    </Scrollspy>
                 </div>
             </div>
         </div>
