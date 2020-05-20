@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import cookie from "js-cookie";
 
-import { Carousel, Pagination, Tabs, Tab, Nav } from "react-bootstrap";
+import { Carousel, Pagination, Tabs, Tab, Nav, Button, Modal } from "react-bootstrap";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
@@ -80,6 +80,30 @@ const Component = props => {
   const [date, setDate] = useState(new Date());
 
   const [tabKey, setTabKey] = useState("home");
+
+  const [xlModalShow, setXlModalShow] = useState(false);
+  const handleXlModalClose = () => setXlModalShow(false);
+  const handleXlModalShow = () => setXlModalShow(true);
+
+  const [lgModalShow, setLgModalShow] = useState(false);
+  const handleLgModalClose = () => setLgModalShow(false);
+  const handleLgModalShow = () => setLgModalShow(true);
+
+  const [mdModalShow, setMdModalShow] = useState(false);
+  const handleMdModalClose = () => setMdModalShow(false);
+  const handleMdModalShow = () => setMdModalShow(true);
+
+  const [smModalShow, setSmModalShow] = useState(false);
+  const handleSmModalClose = () => setSmModalShow(false);
+  const handleSmModalShow = () => setSmModalShow(true);
+
+  const [dialogShow, setDialogShow] = useState(false);
+  const handleDialogClose = () => setDialogShow(false);
+  const handleDialogShow = () => setDialogShow(true);
+
+  const [alertShow, setAlertShow] = useState(false);
+  const handleAlertClose = () => setAlertShow(false);
+  const handleAlertShow = () => setAlertShow(true);
 
   const DateContainer = ({ className, children }) => {
     return (
@@ -1247,7 +1271,6 @@ const Component = props => {
           />
         </div>
         <div className="mb-3 pl-3 font-weight-bold">Size</div>
-
         <div className="pl-3 mb-3">
           <DatePicker
             selected={date}
@@ -1258,7 +1281,6 @@ const Component = props => {
             onChange={newDate => setDate(newDate)}
           />
         </div>
-
         <div className="pl-3 mb-3">
           <DatePicker
             selected={date}
@@ -1365,6 +1387,7 @@ const Component = props => {
           </Pagination>
         </nav>
       </div>
+
       <h3 className="title-sm com-pt" id="tab">
         9. 탭(Tab)
       </h3>
@@ -1898,318 +1921,132 @@ const Component = props => {
           바닥글에 포함되는 버튼은 상황에 따라서 다양한 사이즈(Medium, Lage,
           ExtraLarge)를 사용할 수 있다.
         </p>
+
         <div className="pl-3 mb-5">
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target=".bd-example-modal-xl"
-          >
-            Extra large modal
-          </button>
-          <div
-            className="modal fade bd-example-modal-xl"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="myExtraLargeModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog modal-xl modal-dialog-centered"
-              role="document"
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="myExtraLargeModalLabel">
-                    Extra large modal
-                  </span>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                  adipisci excepturi id laboriosam odio quia quisquam quos
-                  repellendus sapiente sit. Ab, accusantium aspernatur aut
-                  consequatur culpa deserunt dolorem doloribus dolorum earum
-                  error ipsam molestiae nesciunt nisi non nostrum officiis omnis
-                  optio reiciendis repudiandae temporibus totam veniam veritatis
-                  vitae voluptate voluptatibus. A ab adipisci animi aperiam
-                  asperiores, aspernatur assumenda aut cumque deleniti dicta
-                  doloremque dolores eius esse et facere harum impedit ipsam,
-                  itaque laudantium molestiae mollitia nostrum nulla numquam
-                  officia optio perferendis, provident quae quasi quos
-                  repudiandae rerum sapiente sit tempore temporibus veritatis
-                  voluptates voluptatum. Beatae facilis illum ipsa quod vitae?
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target=".bd-example-modal-lg"
-          >
-            Large modal
-          </button>
-          <div
-            className="modal fade bd-example-modal-lg"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="myLargeModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog modal-lg modal-dialog-centered"
-              role="document"
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="myLargeModalLabel">
-                    Large modal
-                  </span>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Alias aliquam animi autem beatae, commodi consectetur
-                  cupiditate, eligendi eum eveniet excepturi iste minima
-                  molestiae nesciunt nobis nostrum quam quis repellat rerum sed
-                  velit? Animi deserunt doloribus ducimus et excepturi expedita
-                  explicabo itaque iusto laborum necessitatibus placeat quae
-                  quis reiciendis repellat, vitae! Alias aliquam, aut doloribus,
-                  eaque eos error eum eveniet exercitationem facilis fugiat
-                  fugit illum in minus necessitatibus nemo neque nihil nulla
-                  possimus provident quam quas unde veritatis. Ab culpa
-                  distinctio fugiat illum ipsa ipsam laboriosam, minus molestias
-                  nisi porro quas quos. Ab exercitationem quod tempore! Dicta
-                  hic illo possimus quaerat.
-                </div>
-              </div>
-            </div>
-          </div>
+          <Button variant="primary" className="mr-1" onClick={handleXlModalShow}>Extra large modal</Button>
+          <Modal show={xlModalShow} onHide={handleXlModalClose} centered size={"xl"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Extra large modal
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
+              adipisci excepturi id laboriosam odio quia quisquam quos
+              repellendus sapiente sit. Ab, accusantium aspernatur aut
+              consequatur culpa deserunt dolorem doloribus dolorum earum
+              error ipsam molestiae nesciunt nisi non nostrum officiis omnis
+              optio reiciendis repudiandae temporibus totam veniam veritatis
+              vitae voluptate voluptatibus. A ab adipisci animi aperiam
+              asperiores, aspernatur assumenda aut cumque deleniti dicta
+              doloremque dolores eius esse et facere harum impedit ipsam,
+              itaque laudantium molestiae mollitia nostrum nulla numquam
+              officia optio perferendis, provident quae quasi quos
+              repudiandae rerum sapiente sit tempore temporibus veritatis
+              voluptates voluptatum. Beatae facilis illum ipsa quod vitae?
+            </Modal.Body>
+          </Modal>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal1"
-          >
-            Medium modal
-          </button>
-          <div
-            className="modal fade"
-            id="exampleModal1"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel1"
-            aria-hidden="true"
-          >
-            <div className="modal-dialog modal-dialog-centered" role="document">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="exampleModalLabel1">
-                    Medium modal
-                  </span>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Alias aliquam animi autem beatae, commodi consectetur
-                  cupiditate, eligendi eum eveniet excepturi iste minima
-                  molestiae nesciunt nobis nostrum quam quis repellat rerum sed
-                  velit? Animi deserunt doloribus ducimus et excepturi expedita
-                  explicabo itaque iusto laborum necessitatibus placeat quae
-                  quis reiciendis repellat, vitae! Alias aliquam, aut doloribus,
-                  eaque eos error eum eveniet exercitationem facilis fugiat
-                  fugit illum in minus necessitatibus nemo neque nihil nulla
-                  possimus provident quam quas unde veritatis. Ab culpa
-                  distinctio fugiat illum ipsa ipsam laboriosam, minus molestias
-                  nisi porro quas quos. Ab exercitationem quod tempore! Dicta
-                  hic illo possimus quaerat.
-                </div>
-              </div>
-            </div>
-          </div>
+          <Button variant="primary" className="mr-1" onClick={handleLgModalShow}>Large modal</Button>
+          <Modal show={lgModalShow} onHide={handleLgModalClose} centered size={"lg"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Large modal
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam animi autem beatae, commodi
+              consectetur cupiditate, eligendi eum eveniet excepturi iste minima molestiae nesciunt nobis nostrum quam
+              quis repellat rerum sed velit? Animi deserunt doloribus ducimus et excepturi expedita explicabo itaque
+              iusto laborum necessitatibus placeat quae quis reiciendis repellat, vitae! Alias aliquam, aut doloribus,
+              eaque eos error eum eveniet exercitationem facilis fugiat fugit illum in minus necessitatibus nemo neque
+              nihil nulla possimus provident quam quas unde veritatis. Ab culpa distinctio fugiat illum ipsa ipsam
+              laboriosam, minus molestias nisi porro quas quos. Ab exercitationem quod tempore! Dicta hic illo
+              possimus quaerat.
+            </Modal.Body>
+          </Modal>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target=".bd-example-modal-sm"
-          >
-            Small modal
-          </button>
+          <Button variant="primary" className="mr-1" onClick={handleMdModalShow}>Medium modal</Button>
+          <Modal show={mdModalShow} onHide={handleMdModalClose} centered size={"md"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Medium modal
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias aliquam animi autem beatae, commodi
+              consectetur cupiditate, eligendi eum eveniet excepturi iste minima molestiae nesciunt nobis nostrum quam
+              quis repellat rerum sed velit? Animi deserunt doloribus ducimus et excepturi expedita explicabo itaque
+              iusto laborum necessitatibus placeat quae quis reiciendis repellat, vitae! Alias aliquam, aut doloribus,
+              eaque eos error eum eveniet exercitationem facilis fugiat fugit illum in minus necessitatibus nemo neque
+              nihil nulla possimus provident quam quas unde veritatis. Ab culpa distinctio fugiat illum ipsa ipsam
+              laboriosam, minus molestias nisi porro quas quos. Ab exercitationem quod tempore! Dicta hic illo
+              possimus quaerat.
+            </Modal.Body>
+          </Modal>
 
-          <div
-            className="modal fade bd-example-modal-sm"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="mySmallModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog modal-sm modal-dialog-centered"
-              role="document"
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="mySmallModalLabel">
-                    Small modal
-                  </span>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">×</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Doloremque, ea eos, facilis fugit nam nihil omnis quae quos
-                  reiciendis saepe tempora voluptates. Ab amet aperiam atque
-                  consequatur est illum in, laudantium nam nesciunt perspiciatis
-                  quas quia sapiente sequi tempora ullam velit voluptas?
-                  Deserunt eos exercitationem id magni minima tempore tenetur?
-                </div>
-              </div>
-            </div>
-          </div>
+          <Button variant="primary" onClick={handleSmModalShow}>Small modal</Button>
+          <Modal show={smModalShow} onHide={handleSmModalClose} centered size={"sm"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Small modal
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, ea eos, facilis fugit nam nihil
+              omnis quae quos reiciendis saepe tempora voluptates. Ab amet aperiam atque consequatur est illum in,
+              laudantium nam nesciunt perspiciatis quas quia sapiente sequi tempora ullam velit voluptas? Deserunt eos
+              exercitationem id magni minima tempore tenetur?
+            </Modal.Body>
+          </Modal>
+
         </div>
+
         <p className="ml-3 mb-2 font-weight-bold">2. Dialog & Alert </p>
         <p className="ml-3 mb-1">사이즈는 Medium(600px)을 사용한다. </p>
         <p className="ml-3 mb-2">
           웹사이트에서 어떠한 행위를 하였을 때 알림을 주거나 주의를 주는 용도로
           사용한다.{" "}
         </p>
-        <div className="pl-3 mb-4">
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal"
-          >
-            dialog
-          </button>
-          <div
-            className="modal fade"
-            id="exampleModal"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog modal-sm modal-dialog-centered"
-              role="document"
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="exampleModalLabel">
-                    Modal title
-                  </span>
-                  <button
-                    type="button"
-                    className="close"
-                    data-dismiss="modal"
-                    aria-label="Close"
-                  >
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Dolorem facilis itaque nulla placeat sunt tenetur?
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-lg btn-outline-secondary com-modal-btn"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button
-                    type="button"
-                    className="btn btn-lg btn-primary com-modal-btn"
-                  >
-                    Save changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
 
-          <button
-            type="button"
-            className="btn btn-primary"
-            data-toggle="modal"
-            data-target="#exampleModal2"
-          >
-            alert
-          </button>
-          <div
-            className="modal fade"
-            id="exampleModal2"
-            tabIndex="-1"
-            role="dialog"
-            aria-labelledby="exampleModalLabel2"
-            aria-hidden="true"
-          >
-            <div
-              className="modal-dialog modal-sm modal-dialog-centered"
-              role="document"
-            >
-              <div className="modal-content">
-                <div className="modal-header">
-                  <span className="modal-title" id="exampleModalLabel2">
-                    Modal title
-                  </span>
-                </div>
-                <div className="modal-body">
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. A
-                  accusantium adipisci alias animi atque deserunt distinctio ea
-                  eligendi et fuga id, illo ipsa iure libero maiores mollitia
-                  nobis nulla optio pariatur porro quasi ratione recusandae
-                  tempora velit voluptatem. Ab alias amet blanditiis cumque
-                  dicta dolorum ex ipsam molestiae mollitia neque odio
-                  perspiciatis, placeat praesentium quaerat repellendus tenetur
-                  vel voluptas voluptatem.
-                </div>
-                <div className="modal-footer">
-                  <button
-                    type="button"
-                    className="btn btn-lg btn-primary btn-block"
-                  >
-                    Save changes
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div className="pl-3 mb-4">
+          <Button variant="primary" className="mr-1" onClick={handleDialogShow}>dialog</Button>
+          <Modal show={dialogShow} onHide={handleDialogClose} centered size={"sm"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Modal title
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem facilis itaque nulla placeat sunt tenetur?
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="outline-secondary" size={"lg"} onClick={handleDialogClose}>
+                Close
+              </Button>
+              <Button variant="primary" size={"lg"} onClick={handleDialogClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
+
+          <Button variant="primary" onClick={handleAlertShow}>alert</Button>
+          <Modal show={alertShow} onHide={handleAlertClose} centered size={"sm"}>
+            <Modal.Header closeButton>
+              <span className="modal-title">
+                Modal title
+              </span>
+            </Modal.Header>
+            <Modal.Body>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. A accusantium adipisci alias animi atque deserunt distinctio ea eligendi et fuga id, illo ipsa iure libero maiores mollitia nobis nulla optio pariatur porro quasi ratione recusandae tempora velit voluptatem. Ab alias amet blanditiis cumque dicta dolorum ex ipsam molestiae mollitia neque odio perspiciatis, placeat praesentium quaerat repellendus tenetur vel voluptas voluptatem.
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant="primary" size={"lg"} onClick={handleAlertClose}>
+                Save Changes
+              </Button>
+            </Modal.Footer>
+          </Modal>
         </div>
       </div>
 
