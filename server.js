@@ -6,12 +6,16 @@ const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
 
+console.log(`process.env.NODE_ENV: ${process.env.NODE_ENV}`);
+
 const express = require("express")();
 const helmet = require("helmet");
 const bodyParser = require("body-parser");
 
-const port = 80;
-const ip = '127.0.0.1';
+const { option } = require("./config.js");
+
+const port = dev ? option.port.dev : option.port.prod;
+const ip = dev ? option.ip.dev : option.ip.prod;
 
 app.prepare().then(() => {
   createServer((req, res) => {
