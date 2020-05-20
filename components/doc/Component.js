@@ -3,7 +3,10 @@ import { useRouter } from "next/router";
 import Link from "next/link";
 import cookie from "js-cookie";
 
-import { Carousel, Pagination } from "react-bootstrap";
+import { Carousel, Pagination, Tabs, Tab, Nav } from "react-bootstrap";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 // bootstrap 에서 사용한 datetimepicker 리액트 버전 -> 리액트 버전 호환 문제로 사용 불가
 // import DateTimeField from "react-bootstrap-datetimepicker";
@@ -13,84 +16,79 @@ import DatePicker, { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const DateInput = ({ val, onClick }) => (
-    <div onClick={onClick}>
-      <input
-          type="text"
-          id="datePicker"
-          className="form-control"
-          placeholder="2020-02-23"
-          title="datepicker"
-          data-autohide="true"
-          value={val}
-          style={{width: "200px"}}
-      />
-      <button
-          className="btn btn-outline-light btn-calendar add-on"
-          type="submit"
-      >
-        <i className="far fa-calendar-alt" />
-      </button>
-    </div>
+  <div onClick={onClick}>
+    <input
+      type="text"
+      id="datePicker"
+      className="form-control"
+      placeholder="2020-02-23"
+      title="datepicker"
+      data-autohide="true"
+      value={val}
+      style={{ width: "200px" }}
+    />
+    <button className="btn btn-outline-light btn-calendar add-on" type="submit">
+      <i className="far fa-calendar-alt" />
+    </button>
+  </div>
 );
 
 const DateInputSm = ({ val, onClick }) => (
-    <div onClick={onClick}>
-      <input
-          type="text"
-          id="datePicker2"
-          className="form-control form-control-sm"
-          placeholder="2020-02-23"
-          title="datepicker"
-          data-autohide="true"
-          value={val}
-          style={{width: "200px"}}
-      />
-      <button
-          className="btn btn-outline-light btn-calendar btn-calendar-sm add-on"
-          type="submit"
-      >
-        <i className="far fa-calendar-alt" />
-      </button>
-    </div>
-)
+  <div onClick={onClick}>
+    <input
+      type="text"
+      id="datePicker2"
+      className="form-control form-control-sm"
+      placeholder="2020-02-23"
+      title="datepicker"
+      data-autohide="true"
+      value={val}
+      style={{ width: "200px" }}
+    />
+    <button
+      className="btn btn-outline-light btn-calendar btn-calendar-sm add-on"
+      type="submit"
+    >
+      <i className="far fa-calendar-alt" />
+    </button>
+  </div>
+);
 
 const DateInputLg = ({ val, onClick }) => (
-    <div onClick={onClick}>
-      <input
-          type="text"
-          id="datePicker"
-          className="form-control"
-          placeholder="2020-02-23"
-          title="datepicker"
-          data-autohide="true"
-          value={val}
-          style={{width: "200px"}}
-      />
-      <button
-          className="btn btn-outline-light btn-calendar add-on"
-          type="submit"
-      >
-        <i className="far fa-calendar-alt" />
-      </button>
-    </div>
+  <div onClick={onClick}>
+    <input
+      type="text"
+      id="datePicker"
+      className="form-control"
+      placeholder="2020-02-23"
+      title="datepicker"
+      data-autohide="true"
+      value={val}
+      style={{ width: "200px" }}
+    />
+    <button className="btn btn-outline-light btn-calendar add-on" type="submit">
+      <i className="far fa-calendar-alt" />
+    </button>
+  </div>
 );
 
 // Component
 const Component = props => {
   const router = useRouter();
 
-  const [ activePage, setActivePage ] = useState(1);
-  const [ date, setDate ] = useState(new Date());
+  const [activePage, setActivePage] = useState(1);
+  const [date, setDate] = useState(new Date());
 
+  const [tabKey, setTabKey] = useState("home");
 
   const DateContainer = ({ className, children }) => {
     return (
-        <div stlye={"z-index: 120"}>
-          <CalendarContainer className={className}>
-            <div>{children}</div>
-          </CalendarContainer>
-        </div>
-    )
+      <div stlye={"z-index: 120"}>
+        <CalendarContainer className={className}>
+          <div>{children}</div>
+        </CalendarContainer>
+      </div>
+    );
   };
 
   return (
@@ -309,19 +307,23 @@ const Component = props => {
         </span>
       </div>
       <div className="text mb-5">
-
         <Carousel slide={false}>
           <Carousel.Item>
-              <p className="com-carousel-col01" style={{height: "100%"}}>First Slide</p>
+            <p className="com-carousel-col01" style={{ height: "100%" }}>
+              First Slide
+            </p>
           </Carousel.Item>
           <Carousel.Item>
-              <p className="com-carousel-col02" style={{height: "100%"}}>Second Slide</p>
+            <p className="com-carousel-col02" style={{ height: "100%" }}>
+              Second Slide
+            </p>
           </Carousel.Item>
           <Carousel.Item>
-              <p className="com-carousel-col03" style={{height: "100%"}}>Third Slide</p>
+            <p className="com-carousel-col03" style={{ height: "100%" }}>
+              Third Slide
+            </p>
           </Carousel.Item>
         </Carousel>
-
       </div>
 
       <h3 className="title-sm com-pt" id="button">
@@ -1235,39 +1237,36 @@ const Component = props => {
         <div className="mb-3 pl-3 font-weight-bold">Normal</div>
 
         <div className="pl-3 mb-4">
-
           <DatePicker
-              selected={date}
-              dateFormat={"yyyy-MM-dd"}
-              customInput={<DateInput/>}
-              calendarContainer={DateContainer}
-              popperClassName="datePopper"
-              onChange={newDate => setDate(newDate)}
+            selected={date}
+            dateFormat={"yyyy-MM-dd"}
+            customInput={<DateInput />}
+            calendarContainer={DateContainer}
+            popperClassName="datePopper"
+            onChange={newDate => setDate(newDate)}
           />
-
         </div>
         <div className="mb-3 pl-3 font-weight-bold">Size</div>
 
         <div className="pl-3 mb-3">
-
           <DatePicker
-              selected={date}
-              dateFormat={"yyyy-MM-dd"}
-              customInput={<DateInputSm/>}
-              calendarContainer={DateContainer}
-              popperClassName="datePopper"
-              onChange={newDate => setDate(newDate)}
+            selected={date}
+            dateFormat={"yyyy-MM-dd"}
+            customInput={<DateInputSm />}
+            calendarContainer={DateContainer}
+            popperClassName="datePopper"
+            onChange={newDate => setDate(newDate)}
           />
         </div>
 
         <div className="pl-3 mb-3">
           <DatePicker
-              selected={date}
-              dateFormat={"yyyy-MM-dd"}
-              customInput={<DateInputLg/>}
-              calendarContainer={DateContainer}
-              popperClassName="datePopper"
-              onChange={newDate => setDate(newDate)}
+            selected={date}
+            dateFormat={"yyyy-MM-dd"}
+            customInput={<DateInputLg />}
+            calendarContainer={DateContainer}
+            popperClassName="datePopper"
+            onChange={newDate => setDate(newDate)}
           />
         </div>
       </div>
@@ -1287,10 +1286,12 @@ const Component = props => {
       </div>
       <div className="text mb-5">
         <nav aria-label="Page navigation example">
-
           <Pagination>
             {/* a class 에 추가 값 안들어감 */}
-            <li className={activePage !== 1 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(1)}>
+            <li
+              className={activePage !== 1 ? "page-item" : "page-item disabled"}
+              onClick={() => setActivePage(1)}
+            >
               <a className="page-link page-arrow" aria-label="Previous">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-double-left" />
@@ -1298,7 +1299,10 @@ const Component = props => {
                 <span className="sr-only">Previous</span>
               </a>
             </li>
-            <li className={activePage !== 1 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(activePage - 1)}>
+            <li
+              className={activePage !== 1 ? "page-item" : "page-item disabled"}
+              onClick={() => setActivePage(activePage - 1)}
+            >
               <a className="page-link page-arrow" aria-label="Previous">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-left" />
@@ -1306,12 +1310,40 @@ const Component = props => {
                 <span className="sr-only">Previous</span>
               </a>
             </li>
-            <Pagination.Item active={1 === activePage} onClick={() => setActivePage(1)}>1</Pagination.Item>
-            <Pagination.Item active={2 === activePage} onClick={() => setActivePage(2)}>2</Pagination.Item>
-            <Pagination.Item active={3 === activePage} onClick={() => setActivePage(3)}>3</Pagination.Item>
-            <Pagination.Item active={4 === activePage} onClick={() => setActivePage(4)}>4</Pagination.Item>
-            <Pagination.Item active={5 === activePage} onClick={() => setActivePage(5)}>5</Pagination.Item>
-            <li className={activePage !== 5 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(activePage + 1)}>
+            <Pagination.Item
+              active={1 === activePage}
+              onClick={() => setActivePage(1)}
+            >
+              1
+            </Pagination.Item>
+            <Pagination.Item
+              active={2 === activePage}
+              onClick={() => setActivePage(2)}
+            >
+              2
+            </Pagination.Item>
+            <Pagination.Item
+              active={3 === activePage}
+              onClick={() => setActivePage(3)}
+            >
+              3
+            </Pagination.Item>
+            <Pagination.Item
+              active={4 === activePage}
+              onClick={() => setActivePage(4)}
+            >
+              4
+            </Pagination.Item>
+            <Pagination.Item
+              active={5 === activePage}
+              onClick={() => setActivePage(5)}
+            >
+              5
+            </Pagination.Item>
+            <li
+              className={activePage !== 5 ? "page-item" : "page-item disabled"}
+              onClick={() => setActivePage(activePage + 1)}
+            >
               <a className="page-link page-arrow" aria-label="Next">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-right" />
@@ -1319,7 +1351,10 @@ const Component = props => {
                 <span className="sr-only">Next</span>
               </a>
             </li>
-            <li className={activePage !== 5 ? "page-item" : "page-item disabled"} onClick={() => setActivePage(5)}>
+            <li
+              className={activePage !== 5 ? "page-item" : "page-item disabled"}
+              onClick={() => setActivePage(5)}
+            >
               <a className="page-link page-arrow" aria-label="Next">
                 <span aria-hidden="true">
                   <i className="fa fa-angle-double-right" />
@@ -1328,7 +1363,6 @@ const Component = props => {
               </a>
             </li>
           </Pagination>
-
         </nav>
       </div>
       <h3 className="title-sm com-pt" id="tab">
@@ -1356,215 +1390,93 @@ const Component = props => {
           탭선택 시 컬러의 차이뿐 아니라 탭사이즈와 텍스트가 커져 선택된 탭을
           강조 수 있다.
         </p>
+
         <div className="pl-3 com-mb02">
-          <nav>
-            <div className="nav nav-tabs" id="nav-tab" role="tablist">
-              <a
-                className="nav-item nav-link active"
-                id="nav-home-tab"
-                data-toggle="tab"
-                href="#nav-home"
-                role="tab"
-                aria-controls="nav-home"
-                aria-selected="true"
-              >
-                Home
-              </a>
-              <a
-                className="nav-item nav-link"
-                id="nav-profile-tab"
-                data-toggle="tab"
-                href="#nav-profile"
-                role="tab"
-                aria-controls="nav-profile"
-                aria-selected="false"
-              >
-                Profile
-              </a>
-              <a
-                className="nav-item nav-link"
-                id="nav-contact-tab"
-                data-toggle="tab"
-                href="#nav-contact"
-                role="tab"
-                aria-controls="nav-contact"
-                aria-selected="false"
-              >
-                Contact
-              </a>
-            </div>
-          </nav>
-          <div className="tab-content" id="nav-tabContent">
-            <div
-              className="tab-pane fade show active com-tab-style01"
-              id="nav-home"
-              role="tabpanel"
-              aria-labelledby="nav-home-tab"
-            >
-              Home
-            </div>
-            <div
-              className="tab-pane fade com-tab-style01"
-              id="nav-profile"
-              role="tabpanel"
-              aria-labelledby="nav-profile-tab"
-            >
-              Profile
-            </div>
-            <div
-              className="tab-pane fade com-tab-style01"
-              id="nav-contact"
-              role="tabpanel"
-              aria-labelledby="nav-contact-tab"
-            >
-              Contact
-            </div>
-          </div>
-        </div>
-        <div className="pl-3 mb-5">
-          <ul
-            className="nav nav-tabs nav-tabs-lg com-tab-mw"
-            id="myTab"
-            role="tablist"
+          <Tabs
+            id="controlled-tab-example"
+            activeKey={tabKey}
+            onSelect={k => setTabKey(k)}
           >
-            <li className="nav-item">
-              <a
-                className="nav-link active"
-                id="home-tab"
-                data-toggle="tab"
-                href="#home"
-                role="tab"
-                aria-controls="home"
-                aria-selected="true"
-              >
-                Home
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="profile-tab"
-                data-toggle="tab"
-                href="#profile"
-                role="tab"
-                aria-controls="profile"
-                aria-selected="false"
-              >
-                Profile
-              </a>
-            </li>
-            <li className="nav-item">
-              <a
-                className="nav-link"
-                id="contact-tab"
-                data-toggle="tab"
-                href="#contact"
-                role="tab"
-                aria-controls="contact"
-                aria-selected="false"
-              >
-                Contact
-              </a>
-            </li>
-          </ul>
-          <div className="tab-content" id="myTabContent">
-            <div
-              className="tab-pane fade show active com-tab-style02"
-              id="home"
-              role="tabpanel"
-              aria-labelledby="home-tab"
-            >
-              Home
-            </div>
-            <div
-              className="tab-pane fade com-tab-style02"
-              id="profile"
-              role="tabpanel"
-              aria-labelledby="profile-tab"
-            >
-              Profile
-            </div>
-            <div
-              className="tab-pane fade com-tab-style02"
-              id="contact"
-              role="tabpanel"
-              aria-labelledby="contact-tab"
-            >
-              Contact
-            </div>
-          </div>
+            <Tab eventKey="home" title="Home">
+              <div className="tab-pane com-tab-style01">Home</div>
+            </Tab>
+            <Tab eventKey="profile" title="Profile">
+              <div className="tab-pane com-tab-style01">Profile</div>
+            </Tab>
+            <Tab eventKey="contact" title="Contact">
+              <div className="tab-pane com-tab-style01">Contact</div>
+            </Tab>
+          </Tabs>
         </div>
+
+        <div className="pl-3 mb-5">
+          <Tab.Container defaultActiveKey={"home"}>
+            <Nav variant="tabs" className={"nav-tabs-lg com-tab-mw"}>
+              <Nav.Item>
+                <Nav.Link eventKey="home">Home</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="profile">Profile</Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="contact">Contact</Nav.Link>
+              </Nav.Item>
+            </Nav>
+
+            <Tab.Content>
+              <Tab.Pane eventKey="home">
+                <div className={"tab-pane com-tab-style02"}>Home</div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="profile">
+                <div className={"tab-pane com-tab-style02"}>Profile</div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="contact">
+                <div className={"tab-pane com-tab-style02"}>Contact</div>
+              </Tab.Pane>
+            </Tab.Content>
+          </Tab.Container>
+        </div>
+
         <p className="ml-3 mb-2 font-weight-bold">2. SNB와 같이 사용하는 탭</p>
         <p className="ml-3 mb-1">
           SNB와 같이 사용하여 SNB 메뉴를 눌렀을 경우 화면을 생성하면서 상단에
           탭으로 쌓인다.
         </p>
         <p className="ml-3 mb-4">탭에 닫기 버튼을 두어 화면을 닫을 수 있다.</p>
+
         <div className="m-3">
-          <nav>
-            <div className="nav nav-tabs" id="nav-tab2" role="tablist">
-              <a
-                className="nav-item nav-link icon active"
-                id="nav-home-tab2"
-                data-toggle="tab"
-                href="#nav-home2"
-                role="tab"
-                aria-controls="nav-home2"
-                aria-selected="true"
-              >
-                Home
-                <i className="far fa-close" />
-              </a>
-              <a
-                className="nav-item nav-link icon"
-                id="nav-profile-tab2"
-                data-toggle="tab"
-                href="#nav-profile2"
-                role="tab"
-                aria-controls="nav-profile2"
-                aria-selected="false"
-              >
-                Profile
-              </a>
-              <a
-                className="nav-item nav-link icon"
-                id="nav-contact-tab2"
-                data-toggle="tab"
-                href="#nav-contact2"
-                role="tab"
-                aria-controls="nav-contact2"
-                aria-selected="false"
-              >
-                Contact
-              </a>
-            </div>
-          </nav>
-          <div className="tab-content" id="nav-tabContent2">
-            <div
-              className="tab-pane fade show active com-tab-style03"
-              id="nav-home2"
-              role="tabpanel"
-              aria-labelledby="nav-home-tab2"
-            >
-              Home
-            </div>
-            <div
-              className="tab-pane fade com-tab-style03"
-              id="nav-profile2"
-              role="tabpanel"
-              aria-labelledby="nav-profile-tab2"
-            >
-              Profile
-            </div>
-            <div
-              className="tab-pane fade com-tab-style03"
-              id="nav-contact2"
-              role="tabpanel"
-              aria-labelledby="nav-contact-tab2"
-            >
-              Contact
-            </div>
-          </div>
+          <Tab.Container defaultActiveKey={"home"}>
+            <Nav variant="tabs">
+              <Nav.Item>
+                <Nav.Link eventKey="home" className={"icon"}>
+                  Home
+                  {/*<FontAwesomeIcon icon={faTimes} size={"1x"} className={"align-right"} />*/}
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="profile" className={"icon"}>
+                  Profile
+                </Nav.Link>
+              </Nav.Item>
+              <Nav.Item>
+                <Nav.Link eventKey="contact" className={"icon"}>
+                  Contact
+                </Nav.Link>
+              </Nav.Item>
+            </Nav>
+
+            <Tab.Content>
+              <Tab.Pane eventKey="home">
+                <div className={"tab-pane com-tab-style02"}>Home</div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="profile">
+                <div className={"tab-pane com-tab-style02"}>Profile</div>
+              </Tab.Pane>
+              <Tab.Pane eventKey="contact">
+                <div className={"tab-pane com-tab-style02"}>Contact</div>
+              </Tab.Pane>
+            </Tab.Content>
+          </Tab.Container>
         </div>
       </div>
 
@@ -2301,15 +2213,11 @@ const Component = props => {
         </div>
       </div>
 
-      <style jsx>{`
-        body{
-          background-color: red
-        }
+      <style jsx global>{`
         .datePopper {
           z-index: 120;
         }
       `}</style>
-
     </div>
   );
 };
