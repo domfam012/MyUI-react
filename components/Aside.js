@@ -8,7 +8,7 @@ import Scrollspy from "react-scrollspy";
 const Aside = props => {
     const router = useRouter();
     const doc = router.asPath.split('/')[2];
-    console.log(doc)
+    // console.log(doc)
 
     return (
         <aside className="doc-aside">
