@@ -58,7 +58,7 @@ const DateInputLg = ({ val, onClick }) => (
   <div onClick={onClick}>
     <input
       type="text"
-      id="datePicker"
+      id="datePicker3"
       className="form-control"
       placeholder="2020-02-23"
       title="datepicker"
@@ -104,6 +104,8 @@ const Component = props => {
   const [alertShow, setAlertShow] = useState(false);
   const handleAlertClose = () => setAlertShow(false);
   const handleAlertShow = () => setAlertShow(true);
+
+  const handleInputChange = () => console.log('input value changed');
 
   const DateContainer = ({ className, children }) => {
     return (
@@ -763,8 +765,8 @@ const Component = props => {
             <p className="pl-3 mb-4">조건을 정해놓고 조건을 고를 때 사용한다.</p>
             <div className="pl-3 mb-3 font-weight-bold">Normal</div>
             <div className="pl-3 mb-4 com-input-width">
-              <select className="custom-select" title="Text">
-                <option selected>Normal</option>
+              <select className="custom-select" title="Text" defaultValue={0}>
+                <option value="0">Normal</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -772,8 +774,8 @@ const Component = props => {
             </div>
             <div className="pl-3 mb-3 font-weight-bold">Disabled</div>
             <div className="pl-3 mb-4 com-input-width">
-              <select className="custom-select" disabled title="Text">
-                <option selected>Disabled</option>
+              <select className="custom-select" disabled title="Text" defaultValue={0}>
+                <option value="0">Disabled</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -781,16 +783,16 @@ const Component = props => {
             </div>
             <div className="pl-3 mb-3 font-weight-bold">Size</div>
             <div className="input-group pl-3 mb-3 com-input-width">
-              <select className="custom-select custom-select-sm" title="example">
-                <option selected>Small</option>
+              <select className="custom-select custom-select-sm" title="example" defaultValue={0}>
+                <option value="0">Small</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
               </select>
             </div>
             <div className="pl-3 mb-5 com-input-width">
-              <select className="custom-select" title="Text">
-                <option selected>Medium</option>
+              <select className="custom-select" title="Text" defaultValue={0}>
+                <option value="0">Medium</option>
                 <option value="1">One</option>
                 <option value="2">Two</option>
                 <option value="3">Three</option>
@@ -932,11 +934,11 @@ const Component = props => {
                   </div>
                 </div>
                 <div className="form-group col-4">
-                  <select className="custom-select" title="email03">
-                    <option selected>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
+                  <select className="custom-select" title="email03" defaultValue={0}>
+                    <option value={0}>Text</option>
+                    <option value={1}>Text</option>
+                    <option value={2}>Text</option>
+                    <option value={3}>Text</option>
                   </select>
                 </div>
               </div>
@@ -968,11 +970,11 @@ const Component = props => {
                   </div>
                 </div>
                 <div className="form-group col-4">
-                  <select className="custom-select" title="email09" disabled>
-                    <option selected>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
+                  <select className="custom-select" title="email09" disabled defaultValue={0}>
+                    <option value={0}>Text</option>
+                    <option value={1}>Text</option>
+                    <option value={2}>Text</option>
+                    <option value={3}>Text</option>
                   </select>
                 </div>
               </div>
@@ -1005,11 +1007,12 @@ const Component = props => {
                   <select
                       className="custom-select custom-select-sm"
                       title="email06"
+                      defaultValue={0}
                   >
-                    <option selected>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
+                    <option value={0}>Text</option>
+                    <option value={1}>Text</option>
+                    <option value={2}>Text</option>
+                    <option value={3}>Text</option>
                   </select>
                 </div>
               </div>
@@ -1038,11 +1041,11 @@ const Component = props => {
                   </div>
                 </div>
                 <div className="form-group col-4">
-                  <select className="custom-select" title="email03">
-                    <option selected>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
-                    <option>Text</option>
+                  <select className="custom-select" title="email03" defaultValue={0}>
+                    <option value={0}>Text</option>
+                    <option value={1}>Text</option>
+                    <option value={2}>Text</option>
+                    <option value={3}>Text</option>
                   </select>
                 </div>
               </div>
@@ -1062,6 +1065,7 @@ const Component = props => {
                     name="customRadio"
                     className="custom-control-input"
                     checked
+                    onChange={handleInputChange}
                 />
                 <label className="custom-control-label" htmlFor="customRadio1">
                   Text
@@ -1099,6 +1103,7 @@ const Component = props => {
                     name="customRadioInline1"
                     className="custom-control-input"
                     checked
+                    onChange={handleInputChange}
                 />
                 <label
                     className="custom-control-label"
