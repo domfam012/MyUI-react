@@ -1,6 +1,6 @@
 {
   "name": "myui-react",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "한국형 리액트, 부트스트랩 템플릿",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,8 @@
     "redux",
     "nextjs",
     "express",
-    "bootstrap"
+    "bootstrap",
+    "react-bootstrap"
   ],
   "author": "Domfam <domfam012@gmail.com> (http://www.domfam.com/domfam_homepage_v2019/dist/html/index.html)",
   "license": "ISC",

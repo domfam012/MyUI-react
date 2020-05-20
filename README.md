@@ -1,5 +1,5 @@
 #[MyUI]
-###### Domfam_v0.1.2
+###### Domfam_v1.1.0
 - - - 
 #### UI Template with *NextJS*, *React*, *Express*, *Bootstrap*   
       
